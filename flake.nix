@@ -50,16 +50,31 @@
           nmap
           jdk21
           jujutsu
+          imagemagick
+          tmux
+          starship
+          gh
+          dua
         ];
 
       homebrew = {
         enable = true;
+        onActivation.cleanup = "uninstall";
+
         caskArgs.no_quarantine = true;
         casks = 
           [ 
              "visual-studio-code"
+             "zed"
              "obsidian"
+             "obs"
+             "prismlauncher"
+             "whisky"
+             "losslesscut"
+             "kicad"
+             "karabiner-elements"
           ];
+
         brews = 
           [
             "speedtest"
@@ -82,7 +97,7 @@
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
 
-      networking.hostName = "nanny-state";
+      networking.hostName = "United-Kingdom-of-Great-Britain-and-Northern-Ireland";
       networking.computerName = "United Kingdom of Great Britain and Northern Ireland";
 
       networking.knownNetworkServices = [
