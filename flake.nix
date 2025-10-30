@@ -81,6 +81,21 @@
 
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
+
+      networking.hostName = "nanny-state";
+      networking.computerName = "United Kingdom of Great Britain and Northern Ireland";
+
+      networking.knownNetworkServices = [
+        "Wi-Fi"
+        "Thunderbolt Ethernet"
+      ];
+
+      networking.dns = [
+        "1.1.1.1"
+        "1.0.0.1"
+        "2606:4700:4700::1111"
+        "2606:4700:4700::1001"
+      ];
       
       security.pam.services.sudo_local.touchIdAuth = true; 
       # user-level options
@@ -94,7 +109,7 @@
       system.defaults.NSGlobalDomain.NSAutomaticDashSubstitutionEnabled = false;
       system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
       system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
-      
+
       # dock
       system.defaults.dock.autohide = true;
       system.defaults.dock.autohide-delay = 0.08; # default 0.24
