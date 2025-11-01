@@ -22,8 +22,7 @@
     speedtest = {
       url = "github:teamookla/homebrew-speedtest";
       flake = false;
-    };
-
+    }; 
 
   };
   
@@ -55,11 +54,12 @@
           starship
           gh
           dua
+          ffmpeg
         ];
 
       homebrew = {
         enable = true;
-        onActivation.cleanup = "uninstall";
+        onActivation.cleanup = "zap";
 
         caskArgs.no_quarantine = true;
         casks = 
@@ -67,12 +67,14 @@
              "visual-studio-code"
              "zed"
              "obsidian"
-             "obs"
              "prismlauncher"
              "whisky"
              "losslesscut"
              "kicad"
              "karabiner-elements"
+             "mx-power-gadget"
+             "raycast"
+             "iina"
           ];
 
         brews = 
@@ -136,7 +138,18 @@
     # $ darwin-rebuild build --flake .#United-Kingdom-of-Great-Britain-and-Northern-Ireland
     darwinConfigurations."United-Kingdom-of-Great-Britain-and-Northern-Ireland" = nix-darwin.lib.darwinSystem {
       modules = [
-        configuration 
+        configuration
+
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.prasiddh = import ./home.nix;
+
+          # Optionally, use home-manager.extraSpecialArgs to pass
+          # arguments to home.nix
+        }
+
         nix-homebrew.darwinModules.nix-homebrew
         {
           nix-homebrew = {
@@ -166,6 +179,7 @@
         ({config, ...}: {
           homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
         })
+        
       ];
     };
   };
