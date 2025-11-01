@@ -23,6 +23,7 @@
     # # "Hello, world!" when run.
     hello
     sl
+    starship
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -71,8 +72,39 @@
   #  /etc/profiles/per-user/prasiddh/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "vim";
   };
+
+  home.shellAliases = {
+    ds = "sudo darwin-rebuild switch --flake ~/.config/nix-darwin";
+  };
+  programs.bash.enable = true;
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+  };
+  programs.starship = {
+      enable = true;
+      # Configuration written to ~/.config/starship.toml
+      settings = {
+        # add_newline = false;
+
+        # character = {
+        #   success_symbol = "[➜](bold green)";
+        #   error_symbol = "[➜](bold red)";
+        # };
+
+        # package.disabled = true;
+      };
+    };
+
+  programs.atuin = {
+      enable = true;
+      # ...
+      flags = [ "--disable-up-arrow" ]; # or --disable-ctrl-r
+    };
+
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

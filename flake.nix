@@ -34,10 +34,6 @@
     configuration = { pkgs, ... }: {
       nixpkgs.config.allowUnfree = true;
 
-      users.users.prasiddh = {
-        home = "/Users/prasiddh";
-      };
-
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs;
@@ -122,7 +118,12 @@
       ];
 
       security.pam.services.sudo_local.touchIdAuth = true;
+
+
       # user-level options
+      users.users.prasiddh = {
+        home = "/Users/prasiddh";
+      };
       system.primaryUser = "prasiddh";
 
       # keyboard
@@ -152,6 +153,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.prasiddh =  import ./home.nix;
+          home-manager.backupFileExtension = ".hmbak";
 
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
