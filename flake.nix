@@ -3,12 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     # Optional: Declarative tap management
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -22,19 +24,24 @@
     speedtest = {
       url = "github:teamookla/homebrew-speedtest";
       flake = false;
-    }; 
+    };
 
   };
-  
+
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, speedtest }:
   let
     configuration = { pkgs, ... }: {
       nixpkgs.config.allowUnfree = true;
+
+      users.users.prasiddh = {
+        home = "/Users/prasiddh";
+      };
+
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs;
-        [ 
+        [
           vim
           htop
           btop
@@ -62,8 +69,8 @@
         onActivation.cleanup = "zap";
 
         caskArgs.no_quarantine = true;
-        casks = 
-          [ 
+        casks =
+          [
              "visual-studio-code"
              "zed"
              "obsidian"
@@ -77,12 +84,12 @@
              "iina"
           ];
 
-        brews = 
+        brews =
           [
             "speedtest"
           ];
       };
-      
+
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
@@ -113,8 +120,8 @@
         "2606:4700:4700::1111"
         "2606:4700:4700::1001"
       ];
-      
-      security.pam.services.sudo_local.touchIdAuth = true; 
+
+      security.pam.services.sudo_local.touchIdAuth = true;
       # user-level options
       system.primaryUser = "prasiddh";
 
@@ -144,7 +151,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.prasiddh = import ./home.nix;
+          home-manager.users.prasiddh =  import ./home.nix;
 
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
@@ -179,7 +186,7 @@
         ({config, ...}: {
           homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
         })
-        
+
       ];
     };
   };
