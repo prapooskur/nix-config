@@ -38,26 +38,33 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs;
         [
+          # cli tools
           vim
           htop
           btop
           tmux
-          atuin
+          nmap
+          imagemagick
+          tmux
+          dua
+          ffmpeg
           fd
           ripgrep
-          fastfetch
+          gh
+          jujutsu
+
+          # shell
+          starship
+          atuin
+
+          # runtimes
+          jdk21
+
+          # fun
           fortune
           cowsay
           lolcat
-          nmap
-          jdk21
-          jujutsu
-          imagemagick
-          tmux
-          starship
-          gh
-          dua
-          ffmpeg
+          fastfetch
         ];
 
       homebrew = {
