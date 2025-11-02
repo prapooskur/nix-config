@@ -50,6 +50,12 @@
           ffmpeg
           fd
           ripgrep
+          nh
+          stress
+          stress-ng
+          sockstat
+          # vcs
+          git
           gh
           jujutsu
 
@@ -57,7 +63,7 @@
           starship
           atuin
 
-          # runtimes
+          # programming
           jdk21
 
           # fun
@@ -74,16 +80,25 @@
         caskArgs.no_quarantine = true;
         casks =
           [
+             # programming
              "visual-studio-code"
              "zed"
+             "orbstack"
+             "podman-desktop"
+
+             # productivity
              "obsidian"
-             "prismlauncher"
-             "whisky"
              "losslesscut"
              "kicad"
              "karabiner-elements"
-             "mx-power-gadget"
              "raycast"
+
+             # games
+             "prismlauncher"
+             "whisky"
+
+             # other
+             "mx-power-gadget"
              "iina"
           ];
 
@@ -98,7 +113,7 @@
 
       # Enable alternative shell support in nix-darwin.
       # programs.fish.enable = true;
-
+      
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
 
@@ -128,9 +143,14 @@
 
 
       # user-level options
+
+      # home-manager breaks if this not declared
       users.users.prasiddh = {
         home = "/Users/prasiddh";
+        shell = pkgs.zsh;
       };
+
+      # below options break if this not declared
       system.primaryUser = "prasiddh";
 
       # keyboard
@@ -160,7 +180,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.prasiddh =  import ./home.nix;
-          home-manager.backupFileExtension = ".hmbak";
+          home-manager.backupFileExtension = "hmbak";
 
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix

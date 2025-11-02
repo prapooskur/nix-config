@@ -22,7 +22,6 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     hello
-    sl
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -71,16 +70,36 @@
   #
   home.sessionVariables = {
     EDITOR = "vim";
+    TERM = "xterm-256color"; # otherwise ghostty ssh broken
   };
 
   home.shellAliases = {
     ds = "sudo darwin-rebuild switch --flake ~/.config/nix-darwin";
+    ls = "ls --color=auto";
   };
   programs.bash.enable = true;
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    initContent = ''
+      # --- From old .zshrc ---
+      # LM Studio CLI path
+      export PATH="$PATH:/Users/prasiddh/.lmstudio/bin"
+
+      # nvm
+      export NVM_DIR="$HOME/.nvm"
+      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"            # This loads nvm
+      [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+      # Local env
+      [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+      # --- End .zshrc additions ---
+      # --- from old .profile ---
+      # # Added by OrbStack: command-line tools and integration # This won't be added again if you remove it.
+      # source ~/.orbstack/shell/init.zsh 2>/dev/null ||
+      # --- end old .profile ---
+    '';
   };
   programs.starship = {
       enable = true;
