@@ -194,6 +194,18 @@
       system.defaults.CustomUserPreferences = {
         "com.apple.symbolichotkeys" = {
           AppleSymbolicHotKeys = {
+            # 'Cmd + Shift + S' copies selected area to clipboard
+            "31" = {
+              enabled = true;
+              value = {
+                parameters = [
+                  115
+                  1
+                  1179648
+                ];
+                type = "standard";
+              };
+            };
             # Disable 'Cmd + Space' for Spotlight Search
             "64" = {
               enabled = false;
