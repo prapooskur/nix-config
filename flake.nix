@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -26,12 +27,24 @@
       flake = false;
     };
 
+    notepad-next = {
+      url = "https://github.com/dail8859/homebrew-notepadnext";
+      flake = false;
+    };
+
   };
 
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, speedtest }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, home-manager, nix-homebrew, homebrew-core, homebrew-cask, speedtest, notepad-next }:
   let
-    configuration = { pkgs, ... }: {
+    configuration = { pkgs, ... }:
+    let
+      pkgs-unstable = import nixpkgs-unstable {
+        system = "aarch64-darwin";
+        config.allowUnfree = true;
+      };
+    in
+    {
       nixpkgs.config.allowUnfree = true;
 
       # List packages installed in system profile. To search by name, run:
@@ -40,20 +53,26 @@
         [
           # cli tools
           vim
+          micro
           htop
           btop
           tmux
           nmap
           imagemagick
+          ghostscript
           tmux
           dua
           ffmpeg
           fd
+          fzf
           ripgrep
           nh
           stress
           stress-ng
-          sockstat
+          zoxide
+          yazi
+          zathura
+          typst
           # vcs
           git
           gh
@@ -71,6 +90,10 @@
           cowsay
           lolcat
           fastfetch
+          astroterm
+
+          # from unstable, not in nixpkgs stable and brew breaks
+          pkgs-unstable.msedit
         ];
 
       homebrew = {
@@ -92,6 +115,7 @@
              "kicad"
              "karabiner-elements"
              "raycast"
+             "notepadnext"
 
              # games
              "prismlauncher"
@@ -113,7 +137,7 @@
 
       # Enable alternative shell support in nix-darwin.
       # programs.fish.enable = true;
-      
+
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
 
@@ -166,6 +190,17 @@
       system.defaults.dock.autohide = true;
       system.defaults.dock.autohide-delay = 0.08; # default 0.24
       system.defaults.dock.autohide-time-modifier = 0.66; # default 1.0
+
+      system.defaults.CustomUserPreferences = {
+        "com.apple.symbolichotkeys" = {
+          AppleSymbolicHotKeys = {
+            # Disable 'Cmd + Space' for Spotlight Search
+            "64" = {
+              enabled = false;
+             };
+          };
+        };
+      };
     };
   in
   {
@@ -203,6 +238,7 @@
               "homebrew/homebrew-core" = homebrew-core;
               "homebrew/homebrew-cask" = homebrew-cask;
               "teamookla/speedtest" = speedtest;
+              "dail8859/notepadnext" = notepad-next;
             };
 
             # Optional: Enable fully-declarative tap management

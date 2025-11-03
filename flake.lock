@@ -125,6 +125,34 @@
         "type": "github"
       }
     },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1761880412,
+        "narHash": "sha256-QoJjGd4NstnyOG4mm4KXF+weBzA2AH/7gn1Pmpfcb0A=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "a7fc11be66bdfb5cdde611ee5ce381c183da8386",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "notepad-next": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-zKBQf4xdF8NintvD1zFGPlH11JTEqv3Aan7eq4SFo9A=",
+        "type": "file",
+        "url": "https://github.com/dail8859/homebrew-notepadnext"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/dail8859/homebrew-notepadnext"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
@@ -133,6 +161,8 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "notepad-next": "notepad-next",
         "speedtest": "speedtest"
       }
     },

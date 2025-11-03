@@ -76,6 +76,7 @@
   home.shellAliases = {
     ds = "sudo darwin-rebuild switch --flake ~/.config/nix-darwin";
     ls = "ls --color=auto";
+    z  = "zoxide";
   };
   programs.bash.enable = true;
   programs.zsh = {
@@ -95,10 +96,6 @@
       # Local env
       [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
       # --- End .zshrc additions ---
-      # --- from old .profile ---
-      # # Added by OrbStack: command-line tools and integration # This won't be added again if you remove it.
-      # source ~/.orbstack/shell/init.zsh 2>/dev/null ||
-      # --- end old .profile ---
     '';
   };
   programs.starship = {
