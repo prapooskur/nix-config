@@ -73,6 +73,8 @@
           yazi
           zathura
           typst
+          ocrmypdf
+
           # vcs
           git
           gh
@@ -116,6 +118,7 @@
              "karabiner-elements"
              "raycast"
              "notepadnext"
+             "alt-tab"
 
              # games
              "prismlauncher"
@@ -194,7 +197,61 @@
       system.defaults.CustomUserPreferences = {
         "com.apple.symbolichotkeys" = {
           AppleSymbolicHotKeys = {
-            # 'Cmd + Shift + S' copies selected area to clipboard
+
+            # disable dock autohide toggle
+            "52" = {
+              enabled = false;
+              value = {
+                parameters = [
+                  100
+                  2
+                  1572864
+                ];
+                type = "standard";
+              };
+            };
+
+            # disable stage manager toggle
+            "222" = {
+              enabled = false;
+              value = {
+                parameters = [
+                  65535
+                  65535
+                  0
+                ];
+                type = "standard";
+              };
+            };
+
+            # Disable: Move focus to next window (Cmd + `) - alttab handles this for us (keep default cmd-tab)
+            "27" = {
+              enabled = false;
+              value = {
+                parameters = [
+                  96
+                  50
+                  1048576
+                ];
+                type = "standard";
+              };
+            };
+
+            # Disable F11 to show desktop
+            "36" = {
+              enabled = true;
+              value = {
+                parameters = [
+                  65535
+                  103
+                  8388608
+                ];
+                type = "standard";
+              };
+            };
+
+
+            # Save picture of selected area as a file (Cmd + Shift + S)
             "31" = {
               enabled = true;
               value = {
