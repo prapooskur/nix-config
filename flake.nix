@@ -181,6 +181,11 @@
       system.primaryUser = "prasiddh";
 
       # keyboard
+      system.keyboard.enableKeyMapping = true;
+      system.keyboard.remapCapsLockToControl = true;
+      system.keyboard.swapLeftCtrlAndFn = true;
+
+      # autocorrect off
       system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
       system.defaults.NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
       system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
