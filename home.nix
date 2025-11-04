@@ -76,7 +76,11 @@
   home.shellAliases = {
     ds = "sudo darwin-rebuild switch --flake ~/.config/nix-darwin";
     ls = "ls --color=auto";
+    ll = "ls -l";
+    la = "ls -A";
     z  = "zoxide";
+    clr = "clear";
+    sudo = "sudo "; # maintian compat with other aliases
   };
   programs.bash.enable = true;
   programs.zsh = {
@@ -84,6 +88,10 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     initContent = ''
+      # Home and End key bindings
+      bindkey '^[[H' beginning-of-line
+      bindkey '^[[F' end-of-line
+
       # --- From old .zshrc ---
       # LM Studio CLI path
       export PATH="$PATH:/Users/prasiddh/.lmstudio/bin"
@@ -107,8 +115,15 @@
       enable = true;
       # ...
       flags = [ "--disable-up-arrow" ]; # or --disable-ctrl-r
-    };
+  };
 
+  programs.tmux = {
+    enable = true;
+    extraConfig = ''
+      set -g default-terminal "xterm-256color"
+      set-option -ga terminal-overrides ",xterm-256color:Tc"  
+    '';
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

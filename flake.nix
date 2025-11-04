@@ -115,10 +115,14 @@
              "obsidian"
              "losslesscut"
              "kicad"
+             "losslesscut"
+             "notepadnext"
+
+             # os utilities
              "karabiner-elements"
              "raycast"
-             "notepadnext"
              "alt-tab"
+             "maccy"
 
              # games
              "prismlauncher"
