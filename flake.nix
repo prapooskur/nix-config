@@ -191,141 +191,13 @@
         shell = pkgs.zsh;
       };
 
-      # below options break if this not declared
+      # defaults.nix options break if this not declared
       system.primaryUser = "prasiddh";
 
-      # fix insane defaults
-      system.defaults.finder.QuitMenuItem = true;
-      system.defaults.finder.ShowPathbar = true;
-      system.defaults.finder._FXShowPosixPathInTitle = true;
-      system.defaults.hitoolbox.AppleFnUsageType = "Do Nothing";
-
-      # trackpad
-      system.defaults.trackpad.FirstClickThreshold = 2; # firm
 
 
-      # keyboard
-      system.keyboard.enableKeyMapping = true;
-      system.keyboard.remapCapsLockToControl = true;
-      system.keyboard.swapLeftCtrlAndFn = true;
-
-      # autocorrect off
-      system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
-      system.defaults.NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
-      system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
-      system.defaults.NSGlobalDomain.NSAutomaticInlinePredictionEnabled = false;
-      system.defaults.NSGlobalDomain.NSAutomaticDashSubstitutionEnabled = false;
-      system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
-      system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
-
-      # desktop/windowing
-      system.defaults.WindowManager.EnableStandardClickToShowDesktop = false;
-      # disable tiling (handled by rectangle)
-      system.defaults.WindowManager.EnableTiledWindowMargins = false;
-      system.defaults.WindowManager.EnableTilingByEdgeDrag = false;
-      system.defaults.WindowManager.EnableTilingOptionAccelerator = false;
-      system.defaults.WindowManager.EnableTopTilingByEdgeDrag = false;
-      # hide desktop icons, show widgets
-      system.defaults.finder.CreateDesktop = false;
-      system.defaults.WindowManager.StandardHideDesktopIcons = true;
-      system.defaults.WindowManager.StandardHideWidgets = false;
-      system.defaults.controlcenter.NowPlaying = true;
-
-      # dock
-      system.defaults.dock.autohide = true;
-      system.defaults.dock.autohide-delay = 0.08; # default 0.24
-      system.defaults.dock.autohide-time-modifier = 0.66; # default 1.0
-
-      # key shortcuts
-      system.defaults.CustomUserPreferences = {
-        "com.apple.symbolichotkeys" = {
-          AppleSymbolicHotKeys = {
-
-            # disable dock autohide toggle
-            "52" = {
-              enabled = false;
-              value = {
-                parameters = [
-                  100
-                  2
-                  1572864
-                ];
-                type = "standard";
-              };
-            };
-
-            # disable stage manager toggle
-            "222" = {
-              enabled = false;
-              value = {
-                parameters = [
-                  65535
-                  65535
-                  0
-                ];
-                type = "standard";
-              };
-            };
-
-            # Disable: Move focus to next window (Cmd + `) - alttab handles this for us (keep default cmd-tab)
-            "27" = {
-              enabled = false;
-              value = {
-                parameters = [
-                  96
-                  50
-                  1048576
-                ];
-                type = "standard";
-              };
-            };
-
-            # Disable F11 to show desktop
-            "36" = {
-              enabled = false;
-              value = {
-                parameters = [
-                  65535
-                  103
-                  8388608
-                ];
-                type = "standard";
-              };
-            };
 
 
-            # Save picture of selected area as a file (Cmd + Shift + S)
-            "31" = {
-              enabled = true;
-              value = {
-                parameters = [
-                  115
-                  1
-                  1179648
-                ];
-                type = "standard";
-              };
-            };
-            # Disable 'Cmd + Space' for Spotlight Search
-            "64" = {
-              enabled = false;
-             };
-
-             # disable quick note on fn+q
-             "190" = {
-              enabled = false;
-              value = {
-                parameters = [
-                    113
-                    12
-                    8388608
-                  ];
-                  type = "standard";
-                };
-             };
-          };
-        };
-      };
     };
   in
   {
@@ -334,6 +206,7 @@
     darwinConfigurations."United-Kingdom-of-Great-Britain-and-Northern-Ireland" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration
+        ./modules/system.nix
 
         home-manager.darwinModules.home-manager
         {
