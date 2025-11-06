@@ -17,12 +17,10 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs;
-  [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     hello
-
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -112,19 +110,19 @@
   };
 
   programs.atuin = {
-      enable = true;
-      # ...
-      flags = [ "--disable-up-arrow" ]; # or --disable-ctrl-r
+    enable = true;
+    # ...
+    flags = [ "--disable-up-arrow" ]; # or --disable-ctrl-r
   };
 
   programs.tmux = {
     enable = true;
     extraConfig = ''
       set -g default-terminal "xterm-256color"
-      set-option -ga terminal-overrides ",xterm-256color:Tc"  
+      set-option -ga terminal-overrides ",xterm-256color:Tc"
     '';
   };
-  
+
   programs.zoxide.enable = true;
 
   # Let Home Manager install and manage itself.
