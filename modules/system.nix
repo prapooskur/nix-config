@@ -25,14 +25,10 @@
       autohide-time-modifier = 0.66; # default 1.0
     };
 
-
-
     # fix insane finder defaults
     defaults.finder.QuitMenuItem = true;
     defaults.finder.ShowPathbar = true;
     defaults.finder._FXShowPosixPathInTitle = true;
-
-
 
     # input devices
     # trackpad
@@ -112,7 +108,6 @@
             };
           };
 
-
           # Save picture of selected area as a file (Cmd + Shift + S)
           "31" = {
             enabled = true;
@@ -135,12 +130,12 @@
             enabled = false;
             value = {
               parameters = [
-                  113
-                  12
-                  8388608
-                ];
-                type = "standard";
-              };
+                113
+                12
+                8388608
+              ];
+              type = "standard";
+            };
           };
         };
       };
