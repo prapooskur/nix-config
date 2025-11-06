@@ -4,16 +4,18 @@
   system = {
 
     # desktop/windowing
-    defaults.WindowManager.EnableStandardClickToShowDesktop = false;
-    # disable tiling (handled by rectangle)
-    defaults.WindowManager.EnableTiledWindowMargins = false;
-    defaults.WindowManager.EnableTilingByEdgeDrag = false;
-    defaults.WindowManager.EnableTilingOptionAccelerator = false;
-    defaults.WindowManager.EnableTopTilingByEdgeDrag = false;
+    defaults.WindowManager = {
+      EnableStandardClickToShowDesktop = false;
+      # disable tiling (handled by rectangle)
+      EnableTiledWindowMargins = false;
+      EnableTilingByEdgeDrag = false;
+      EnableTilingOptionAccelerator = false;
+      EnableTopTilingByEdgeDrag = false;
+      StandardHideDesktopIcons = true;
+      StandardHideWidgets = false;
+    };
     # hide desktop icons, show widgets
     defaults.finder.CreateDesktop = false;
-    defaults.WindowManager.StandardHideDesktopIcons = true;
-    defaults.WindowManager.StandardHideWidgets = false;
     defaults.controlcenter.NowPlaying = true;
 
     # dock
@@ -29,7 +31,7 @@
     defaults.finder.QuitMenuItem = true;
     defaults.finder.ShowPathbar = true;
     defaults.finder._FXShowPosixPathInTitle = true;
-    defaults.hitoolbox.AppleFnUsageType = "Do Nothing";
+
 
 
     # input devices
@@ -41,6 +43,7 @@
       remapCapsLockToControl = true;
       swapLeftCtrlAndFn = true;
     };
+    defaults.hitoolbox.AppleFnUsageType = "Do Nothing";
     # fix insane autocorrect defaults
     defaults.NSGlobalDomain = {
       NSAutomaticSpellingCorrectionEnabled = false;
