@@ -23,6 +23,7 @@
     # # "Hello, world!" when run.
     hello
 
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -78,7 +79,6 @@
     ls = "ls --color=auto";
     ll = "ls -l";
     la = "ls -A";
-    z  = "zoxide";
     clr = "clear";
     sudo = "sudo "; # maintian compat with other aliases
   };
@@ -124,6 +124,8 @@
       set-option -ga terminal-overrides ",xterm-256color:Tc"  
     '';
   };
+  
+  programs.zoxide.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

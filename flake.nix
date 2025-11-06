@@ -74,6 +74,10 @@
           zathura
           typst
           ocrmypdf
+          poppler
+          poppler-utils
+          binsider
+          nixfmt-rfc-style
 
           # vcs
           git
@@ -96,6 +100,7 @@
 
           # from unstable, not in nixpkgs stable and brew breaks
           pkgs-unstable.msedit
+          pkgs-unstable.bun
         ];
 
       homebrew = {
@@ -110,6 +115,7 @@
              "zed"
              "orbstack"
              "podman-desktop"
+             "wireshark-app"
 
              # productivity
              "obsidian"
@@ -117,12 +123,16 @@
              "kicad"
              "losslesscut"
              "notepadnext"
+             "librewolf"
 
              # os utilities
+             "utm"
              "karabiner-elements"
              "raycast"
              "alt-tab"
              "maccy"
+             "rectangle"
+             "notunes"
 
              # games
              "prismlauncher"
@@ -184,6 +194,16 @@
       # below options break if this not declared
       system.primaryUser = "prasiddh";
 
+      # fix insane defaults
+      system.defaults.finder.QuitMenuItem = true;
+      system.defaults.finder.ShowPathbar = true;
+      system.defaults.finder._FXShowPosixPathInTitle = true;
+      system.defaults.hitoolbox.AppleFnUsageType = "Do Nothing";
+
+      # trackpad
+      system.defaults.trackpad.FirstClickThreshold = 2; # firm
+
+
       # keyboard
       system.keyboard.enableKeyMapping = true;
       system.keyboard.remapCapsLockToControl = true;
@@ -198,11 +218,25 @@
       system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
       system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
 
+      # desktop/windowing
+      system.defaults.WindowManager.EnableStandardClickToShowDesktop = false;
+      # disable tiling (handled by rectangle)
+      system.defaults.WindowManager.EnableTiledWindowMargins = false;
+      system.defaults.WindowManager.EnableTilingByEdgeDrag = false;
+      system.defaults.WindowManager.EnableTilingOptionAccelerator = false;
+      system.defaults.WindowManager.EnableTopTilingByEdgeDrag = false;
+      # hide desktop icons, show widgets
+      system.defaults.finder.CreateDesktop = false;
+      system.defaults.WindowManager.StandardHideDesktopIcons = true;
+      system.defaults.WindowManager.StandardHideWidgets = false;
+      system.defaults.controlcenter.NowPlaying = true;
+
       # dock
       system.defaults.dock.autohide = true;
       system.defaults.dock.autohide-delay = 0.08; # default 0.24
       system.defaults.dock.autohide-time-modifier = 0.66; # default 1.0
 
+      # key shortcuts
       system.defaults.CustomUserPreferences = {
         "com.apple.symbolichotkeys" = {
           AppleSymbolicHotKeys = {
@@ -248,7 +282,7 @@
 
             # Disable F11 to show desktop
             "36" = {
-              enabled = true;
+              enabled = false;
               value = {
                 parameters = [
                   65535
@@ -275,6 +309,19 @@
             # Disable 'Cmd + Space' for Spotlight Search
             "64" = {
               enabled = false;
+             };
+
+             # disable quick note on fn+q
+             "190" = {
+              enabled = false;
+              value = {
+                parameters = [
+                    113
+                    12
+                    8388608
+                  ];
+                  type = "standard";
+                };
              };
           };
         };
