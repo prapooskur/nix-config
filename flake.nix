@@ -118,6 +118,7 @@
              "wireshark-app"
 
              # productivity
+             "zoom"
              "obsidian"
              "losslesscut"
              "kicad"
