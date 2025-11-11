@@ -78,6 +78,8 @@
           poppler-utils
           binsider
           nixfmt-rfc-style
+          wget
+          tdf
 
           # vcs
           git
@@ -106,6 +108,7 @@
       homebrew = {
         enable = true;
         onActivation.cleanup = "zap";
+        onActivation.autoUpdate = true;
 
         caskArgs.no_quarantine = true;
         casks =
@@ -125,6 +128,7 @@
              "losslesscut"
              "notepadnext"
              "librewolf"
+             "calibre"
 
              # os utilities
              "utm"
