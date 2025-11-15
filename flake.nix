@@ -80,6 +80,7 @@
           nixfmt-rfc-style
           wget
           tdf
+          texlive.combined.scheme-full
 
           # vcs
           git
@@ -132,7 +133,6 @@
 
              # os utilities
              "utm"
-             "karabiner-elements"
              "raycast"
              "alt-tab"
              "maccy"
