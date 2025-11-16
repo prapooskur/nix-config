@@ -28,14 +28,19 @@
     };
 
     notepad-next = {
-      url = "https://github.com/dail8859/homebrew-notepadnext";
+      url = "github:dail8859/homebrew-notepadnext";
+      flake = false;
+    };
+
+    sikarugir = {
+      url = "github:Sikarugir-App/homebrew-sikarugir";
       flake = false;
     };
 
   };
 
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, home-manager, nix-homebrew, homebrew-core, homebrew-cask, speedtest, notepad-next }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, home-manager, nix-homebrew, homebrew-core, homebrew-cask, speedtest, notepad-next, sikarugir }:
   let
     configuration = { pkgs, ... }:
     let
@@ -134,6 +139,7 @@
              # os utilities
              "utm"
              "raycast"
+             "karabiner-elements"
              "alt-tab"
              "maccy"
              "rectangle"
@@ -142,6 +148,7 @@
              # games
              "prismlauncher"
              "whisky"
+             "sikarugir"
 
              # other
              "mx-power-gadget"
@@ -242,6 +249,7 @@
               "homebrew/homebrew-cask" = homebrew-cask;
               "teamookla/speedtest" = speedtest;
               "dail8859/notepadnext" = notepad-next;
+              "Sikarugir-App/homebrew-sikarugir" = sikarugir;
             };
 
             # Optional: Enable fully-declarative tap management

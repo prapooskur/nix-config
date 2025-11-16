@@ -144,13 +144,17 @@
     "notepad-next": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-UROrnxBInPa8Dse7dC/7+lzTumRw8IF2XCYirV0Ki5s=",
-        "type": "file",
-        "url": "https://github.com/dail8859/homebrew-notepadnext"
+        "lastModified": 1750130581,
+        "narHash": "sha256-S0VDfnVobRV7mXI5nQOnOI/JnvHkBon5IRJJtXN0EtY=",
+        "owner": "dail8859",
+        "repo": "homebrew-notepadnext",
+        "rev": "98dca4b10eaf82621119064af7fe8dc89798a7f8",
+        "type": "github"
       },
       "original": {
-        "type": "file",
-        "url": "https://github.com/dail8859/homebrew-notepadnext"
+        "owner": "dail8859",
+        "repo": "homebrew-notepadnext",
+        "type": "github"
       }
     },
     "root": {
@@ -163,7 +167,24 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "notepad-next": "notepad-next",
+        "sikarugir": "sikarugir",
         "speedtest": "speedtest"
+      }
+    },
+    "sikarugir": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1755132769,
+        "narHash": "sha256-SN1PrxawrvkOGe9LYBWsb/o9ae+rd7E1xVtGEumUw5c=",
+        "owner": "Sikarugir-App",
+        "repo": "homebrew-sikarugir",
+        "rev": "f40f3149ea598ec4fedd052c8784dc1b3b0a2694",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Sikarugir-App",
+        "repo": "homebrew-sikarugir",
+        "type": "github"
       }
     },
     "speedtest": {
