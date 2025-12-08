@@ -2,13 +2,13 @@
   description = "Example nix-darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
@@ -86,9 +86,13 @@
           wget
           tdf
           texlive.combined.scheme-full
+          hugo
+          mediainfo
+          tree
 
           # vcs
           git
+          git-lfs
           gh
           jujutsu
 
@@ -98,6 +102,7 @@
 
           # programming
           jdk21
+          deno
 
           # fun
           fortune
@@ -135,6 +140,7 @@
              "notepadnext"
              "librewolf"
              "calibre"
+             "localsend"
 
              # os utilities
              "utm"

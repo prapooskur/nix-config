@@ -6,8 +6,8 @@
     # keyboard (why isn't this in defaults)
     keyboard = {
       enableKeyMapping = true;
-      remapCapsLockToControl = true;
-      swapLeftCtrlAndFn = true;
+      remapCapsLockToControl = false;
+      swapLeftCtrlAndFn = false;
     };
 
     defaults = {
