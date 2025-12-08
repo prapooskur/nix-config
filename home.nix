@@ -70,8 +70,8 @@
   home.sessionVariables = {
     EDITOR = "vim";
     TERM = "xterm-256color"; # otherwise ghostty ssh broken
-    ANDROID_HOME = "~/Library/Android/sdk";
-    PATH = "$PATH:~/Library/Android/sdk/platform-tools";
+    ANDROID_HOME = "/Users/prasiddh/Library/Android/sdk";
+    PATH = "$PATH:/Users/prasiddh/Library/Android/sdk/platform-tools";
   };
 
   home.shellAliases = {
