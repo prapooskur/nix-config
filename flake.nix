@@ -89,6 +89,7 @@
           hugo
           mediainfo
           tree
+          rsync
 
           # vcs
           git
